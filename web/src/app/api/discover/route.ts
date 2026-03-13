@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     // Path to our JSON-ready entry point
     const scriptPath = path.join(process.cwd(), '..', 'run_json.py');
 
-    return new Promise((resolve) => {
+    return new Promise<NextResponse>((resolve) => {
       console.log(`Executing Python agent for topic: ${topic}`);
       const child = spawn(pythonPath, [scriptPath, topic], {
         cwd: path.join(process.cwd(), '..'),
