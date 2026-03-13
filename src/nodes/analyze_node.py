@@ -2,8 +2,6 @@ import os
 import json
 from typing import Dict, Any
 from pydantic import BaseModel, Field
-from google import genai
-from google.genai import types
 
 class NeedItem(BaseModel):
     need: str = Field(description="A concise description of the unmet need or pain point.")

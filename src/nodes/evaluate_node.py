@@ -2,8 +2,6 @@ import os
 import json
 from typing import Dict, Any
 from pydantic import BaseModel, Field
-from google import genai
-from google.genai import types
 
 class EvaluationResult(BaseModel):
     idea: str = Field(description="The core idea or pain point being evaluated.")
