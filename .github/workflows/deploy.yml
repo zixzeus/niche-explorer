@@ -30,14 +30,21 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        gcloud auth configure-docker --quiet
-        docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }} .
-        docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
+        gcloud auth configure-docker us-central1-docker.pkg.dev --quiet
+        # Ensure the repository exists (Artifact Registry specific)
+        gcloud artifacts repositories create ${{ env.SERVICE_NAME }} \
+          --repository-format=docker \
+          --location=${{ env.REGION }} \
+          --description="Docker repository for Niche Explorer" || true
+        
+        IMAGE_NAME=us-central1-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
+        docker build -t $IMAGE_NAME .
+        docker push $IMAGE_NAME
 
     - name: Deploy to Cloud Run
       run: |
         gcloud run deploy ${{ env.SERVICE_NAME }} \
-          --image gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }} \
+          --image us-central1-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }} \
           --platform managed \
           --region ${{ env.REGION }} \
           --allow-unauthenticated \
