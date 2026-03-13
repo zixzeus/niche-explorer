@@ -33,6 +33,9 @@ def evaluate_node(state: Dict[str, Any]) -> Dict[str, Any]:
     # Get profile from state
     user_profile = state.get("user_profile", "Experienced software developer.")
     
+    # Prepare data for LLM
+    needs_str = "\n".join([f"- Need: {n['need']}\n  Context: {n['context']}" for n in needs])
+    
     prompt = (
         "You are a strategic business advisor and technical co-founder.\n"
         "Evaluate the following list of user needs/pain points against my exact technical profile.\n"
