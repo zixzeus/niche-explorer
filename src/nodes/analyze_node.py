@@ -43,8 +43,8 @@ def analyze_node(state: Dict[str, Any]) -> Dict[str, Any]:
     )
 
     try:
-        # Using stable model name: gemini-1.5-flash
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={api_key}"
+        # Using latest available model: gemini-2.5-flash on v1beta
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
         
         schema = {
             "type": "OBJECT",
