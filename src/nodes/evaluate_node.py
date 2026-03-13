@@ -52,7 +52,8 @@ def evaluate_node(state: Dict[str, Any]) -> Dict[str, Any]:
     )
 
     try:
-        url = f"https://aiplatform.googleapis.com/v1/publishers/google/models/gemini-2.5-pro:generateContent?key={api_key}"
+        # Using stable model name: gemini-1.5-pro
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent?key={api_key}"
         
         schema = {
             "type": "OBJECT",
@@ -85,6 +86,8 @@ def evaluate_node(state: Dict[str, Any]) -> Dict[str, Any]:
         
         import requests
         response = requests.post(url, headers={"Content-Type": "application/json"}, json=payload)
+        if response.status_code != 200:
+            print(f"Gemini API Error ({response.status_code}): {response.text}")
         response.raise_for_status()
         
         resp_data = response.json()
