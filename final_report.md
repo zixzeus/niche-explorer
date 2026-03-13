@@ -2,23 +2,18 @@
 
 Here are the top business opportunities that match your unique skillset (C++, Python, 3D Geometry, 2D Graphic algos):
 
-## 1. Better developer tools, such as a tool for visualizing complex codebases or algorithms in 2D/3D.
-- **Match Score:** 75/100
-- **Why you:** A specific application like a code visualization tool would directly leverage your experience with C++ for performance, 2D/3D geometry for the visualization engine, and complex algorithms. It's a niche in the dev tool space where your specific background provides a distinct advantage over typical developers.
-- **Profitability:** Medium
-
-## 2. Solutions to reduce the high cost of managing AI-generated code (building, testing, debugging).
-- **Match Score:** 90/100
-- **Why you:** This is an excellent match. Building high-performance code analysis and debugging tools requires deep expertise in complex algorithms and C++, which you possess. The problem space is new and technically challenging, creating a strong moat. You could even apply your 2D/3D skills to create novel code visualization tools for understanding AI-generated logic.
-- **Profitability:** High
-
-## 3. Software development tools that make editing code feel more intuitive, like assembling building blocks.
+## 1. Lack of understanding or appreciation for specialized tools that solve complex, real-world problems.
 - **Match Score:** 95/100
-- **Why you:** This is an almost perfect fit. It requires a high-performance backend (C++), complex algorithmic logic (AST manipulation), and a sophisticated 2D/3D visual front-end (geometry/image processing skills). Your experience building the Jigsaw Designer desktop app is directly transferable. This leverages every part of your unique profile to build a product with a very strong technical moat.
+- **Why you:** This is a perfect match. Your background in 3D geometry modeling kernels is the epitome of a specialized tool solving complex problems. You have the rare ability to identify a deep, technical pain point in a niche like CAD, CAM, or scientific visualization and build a solution that generalist developers cannot replicate. This creates an extremely strong moat.
 - **Profitability:** High
 
-## 4. Building specialized software for an underserved software industry niche (e.g., CAD, scientific visualization).
-- **Match Score:** 100/100
-- **Why you:** This directly targets your most unique and valuable skill: experience with a 3D geometry modeling kernel. Building a next-generation tool or library for a niche like industrial design, medical imaging, or scientific simulation gives you an unparalleled 'unfair advantage'. This is a field where C++ and complex algorithms are the standard, and the moat against generalist developers is enormous.
+## 2. Dated user experience in developer tools, particularly the reliance on text-only or keyboard-shortcut-only input for editing values.
+- **Match Score:** 90/100
+- **Why you:** This is an excellent fit. Your experience with 3D geometry, 2D image algorithms, and C++ desktop applications is the perfect trifecta to build a visually-driven developer tool. Imagine a debugger where developers can manipulate 3D transformations or complex data structures using interactive visual widgets. This is something a typical web developer could not build.
+- **Profitability:** High
+
+## 3. Difficulty understanding and deciphering other developers' code or solutions.
+- **Match Score:** 80/100
+- **Why you:** This is a very promising idea that plays directly to your strengths. You can go beyond traditional text-based analysis and apply your 3D geometry and 2D algorithm skills to create a powerful code visualization tool. Imagine navigating a codebase as a 3D structure. This is a unique, defensible idea that most developers couldn't even conceive of, let alone build.
 - **Profitability:** High
 

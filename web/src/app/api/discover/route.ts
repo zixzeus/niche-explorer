@@ -24,12 +24,21 @@ export async function POST(req: NextRequest) {
         let stdout = '';
         let stderr = '';
 
-        child.stdout.on('data', (data) => { stdout += data.toString(); });
-        child.stderr.on('data', (data) => { stderr += data.toString(); });
+        child.stdout.on('data', (data) => { 
+          const chunk = data.toString();
+          stdout += chunk;
+          console.log(`[Python Stdout]: ${chunk}`);
+        });
+        child.stderr.on('data', (data) => { 
+          const chunk = data.toString();
+          stderr += chunk;
+          console.error(`[Python Stderr]: ${chunk}`);
+        });
 
         child.on('close', (code) => {
+          console.log(`Python agent finished with code ${code}`);
           if (code !== 0) {
-            console.error(`Python script failed with code ${code}, Stderr: ${stderr}`);
+            console.error(`Python script failed with code ${code}. Final Stderr: ${stderr}`);
             resolve(NextResponse.json({ error: 'Agent execution failed', details: stderr }, { status: 500 }));
             return;
           }
