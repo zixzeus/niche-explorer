@@ -44,6 +44,7 @@ const Card = ({ item }: { item: any }) => {
 
 export default function Home() {
   const [topic, setTopic] = useState('');
+  const [userProfile, setUserProfile] = useState('- Expert in C++, Python, and 3D Modeling\n- Experience in high-performance computing\n- Developed desktop applications with complex algos');
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
@@ -62,7 +63,7 @@ export default function Home() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ topic }),
+        body: JSON.stringify({ topic, userProfile }),
       });
 
       if (!response.ok) {
@@ -89,7 +90,7 @@ export default function Home() {
 
       <main className="max-w-6xl mx-auto px-6 pt-24">
         {/* Header - Optimized for SEO with semantic H1 */}
-        <section className="text-center mb-20">
+        <section className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 animate-pulse">
             <Sparkles className="w-4 h-4 text-accent" />
             <span className="text-[11px] uppercase tracking-[3px] font-bold text-white/70">Intelligence Engine v1.0</span>
@@ -102,6 +103,22 @@ export default function Home() {
           </p>
         </section>
 
+        {/* User Profile Input Section */}
+        <section className="max-w-3xl mx-auto mb-8 animate-in fade-in slide-in-from-top-4 duration-700">
+           <div className="glass-morphism rounded-2xl border border-white/10 p-6">
+              <label htmlFor="user-profile" className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-accent mb-4">
+                <User className="w-4 h-4" /> My Technical Identity & Skills
+              </label>
+              <textarea
+                id="user-profile"
+                value={userProfile}
+                onChange={(e) => setUserProfile(e.target.value)}
+                placeholder="List your expertises (e.g. 'C++, React, ML, Distributed systems...')"
+                className="w-full bg-black/40 border border-white/5 rounded-xl p-4 text-gray-300 text-sm focus:outline-none focus:border-accent/40 transition-colors min-h-[120px] resize-none"
+              />
+           </div>
+        </section>
+
         {/* Search Bar */}
         <section className="relative max-w-3xl mx-auto mb-24 group">
           <div className="absolute -inset-1 bg-linear-to-r from-accent to-blue-600 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-1000"></div>
@@ -111,7 +128,7 @@ export default function Home() {
             <input
               id="topic-search"
               type="text"
-              placeholder="Search domain (e.g. '3D Printing', 'CAD tools', 'Medical AI'...)"
+              placeholder="Target Market (e.g. '3D Printing', 'CAD tools'...)"
               className="bg-transparent flex-1 outline-none text-xl placeholder:text-gray-700 py-3"
               value={topic}
               onChange={(e) => setTopic(e.target.value)}

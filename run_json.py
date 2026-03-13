@@ -16,12 +16,14 @@ def main():
         return
 
     topic = sys.argv[1]
+    user_profile = sys.argv[2] if len(sys.argv) > 2 else "Experienced software developer."
     
     try:
         agent = create_discovery_agent()
         
         initial_state = {
             "search_query": topic,
+            "user_profile": user_profile,
             "raw_data": [],
             "identified_needs": [],
             "evaluated_ideas": [],

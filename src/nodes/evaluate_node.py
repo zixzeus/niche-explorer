@@ -30,24 +30,17 @@ def evaluate_node(state: Dict[str, Any]) -> Dict[str, Any]:
             {"idea": "Dummy Idea", "match_score": 90, "reason": "Dummy reason", "profitability": "High"}
         ]}
 
-    # Prepare data for LLM
-    needs_str = "\n".join([f"- Need: {n['need']}\n  Context: {n['context']}" for n in needs])
-
-    user_profile = (
-        "- Expert in C++ and Python\n"
-        "- Experience in 3D geometry modeling kernel algorithms (ZWSOFT)\n"
-        "- Developed, published, and operated an independent C-end desktop application (Jigsaw Designer), familiar with 2D image algorithms, puzzle generation logic, and product operations.\n"
-        "- Strong capability in high-performance computing and dealing with complex algorithms."
-    )
-
+    # Get profile from state
+    user_profile = state.get("user_profile", "Experienced software developer.")
+    
     prompt = (
         "You are a strategic business advisor and technical co-founder.\n"
         "Evaluate the following list of user needs/pain points against my exact technical profile.\n"
         f"My Profile:\n{user_profile}\n\n"
         f"The Needs:\n{needs_str}\n\n"
         "For each need, evaluate its business potential and calculate a 'match_score' (0-100).\n"
-        "Give high scores (80+) ONLY to ideas where my specific background (C++, 3D Geometry, Image Processing) gives me an unfair advantage and builds a strong moat against typical web developers.\n"
-        "Give low scores to generic SaaS ideas (like basic CRUD apps or auth systems).\n"
+        "Give high scores (80+) ONLY to ideas where my specific background (as described in My Profile) gives me an unfair advantage and builds a strong moat against generic developers.\n"
+        "Give low scores to generic SaaS ideas or things where my skills don't add unique value.\n"
         "Extract the evaluations."
     )
 

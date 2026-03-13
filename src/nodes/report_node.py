@@ -9,7 +9,7 @@ def report_node(state: Dict[str, Any]) -> Dict[str, Any]:
     ideas = state.get("evaluated_ideas", [])
     
     report = "# Requirements Discovery Report\n\n"
-    report += "Here are the top business opportunities that match your unique skillset (C++, Python, 3D Geometry, 2D Graphic algos):\n\n"
+    report += "Here are the top business opportunities that match your specific technical profile and expertise:\n\n"
     
     for idx, idea in enumerate(ideas, 1):
         report += f"## {idx}. {idea['idea']}\n"

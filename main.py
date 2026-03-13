@@ -21,8 +21,16 @@ def main():
     initial_topic = "软件开发者抱怨的工具, 痛点, 缺少的功能"
     print(f"Starting discovery process with topic: {initial_topic}")
     
+    user_profile = (
+        "- Expert in C++ and Python\n"
+        "- Experience in 3D geometry modeling kernel algorithms (ZWSOFT)\n"
+        "- Developed, published, and operated an independent C-end desktop application (Jigsaw Designer), familiar with 2D image algorithms, puzzle generation logic, and product operations.\n"
+        "- Strong capability in high-performance computing and dealing with complex algorithms."
+    )
+    
     initial_state = {
         "search_query": initial_topic,
+        "user_profile": user_profile,
         "raw_data": [],
         "identified_needs": [],
         "evaluated_ideas": [],

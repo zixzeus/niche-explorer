@@ -4,7 +4,7 @@ import path from 'path';
 
 export async function POST(req: NextRequest) {
   try {
-    const { topic } = await req.json();
+    const { topic, userProfile } = await req.json();
 
     if (!topic) {
       return NextResponse.json({ error: 'Topic is required' }, { status: 400 });
@@ -12,12 +12,13 @@ export async function POST(req: NextRequest) {
 
     const pythonPath = process.env.PYTHON_PATH || '/usr/bin/python3';
     const scriptPath = path.join(process.cwd(), '..', 'run_json.py');
+    const profile = userProfile || 'Experienced software developer.';
 
     // Wrap the spawn logic in a typed async function
     const executeAgent = (): Promise<NextResponse> => {
       return new Promise((resolve) => {
-        console.log(`Executing Python agent for topic: ${topic}`);
-        const child = spawn(pythonPath, [scriptPath, topic], {
+        console.log(`Executing Python agent for topic: ${topic}, Profile: ${profile}`);
+        const child = spawn(pythonPath, [scriptPath, topic, profile], {
           cwd: path.join(process.cwd(), '..'),
         });
 

@@ -6,6 +6,7 @@ class AgentState(TypedDict):
     This state will be passed around and updated by each node in the LangGraph.
     """
     search_query: str
+    user_profile: str
     raw_data: List[Dict[str, Any]]
     identified_needs: List[Dict[str, Any]]
     evaluated_ideas: List[Dict[str, Any]]
