@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
 
 # Set environment variables
 ENV PYTHON_PATH=/usr/bin/python3
-ENV NODE_ENV=production
+
 ENV PORT=8080
 
 WORKDIR /app
@@ -33,6 +33,7 @@ COPY . .
 RUN cd web && npm run build
 
 # Step 7: Run Application
+ENV NODE_ENV=production
 EXPOSE 8080
 
 # Next.js App Router usually starts from the web directory
